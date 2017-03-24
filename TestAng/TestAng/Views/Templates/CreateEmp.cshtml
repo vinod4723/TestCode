@@ -1,0 +1,33 @@
+﻿
+<div class="container">
+    <div class="row">
+        <div class="form_bg">
+            <table>
+                <tr>
+                    <td>EmpId: </td>
+                    <td class="form-control">
+                        <span>{{ EmpCode }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <input class="form-control" type="text" data-ng-model="EmpModel.Name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Salary:</td>
+                    <td>
+                        <input class="form-control" type="number" data-ng-model="EmpModel.Salary" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" class="form-control" data-ng-click="AddData();" value="Save Data" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

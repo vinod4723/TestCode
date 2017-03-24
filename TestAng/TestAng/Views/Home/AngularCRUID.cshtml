@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "AngularCRUID";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.launch-modal').click(function () {
+            $('#myModal').modal({
+                backdrop: 'static'
+            });
+        });
+      
+    });
+    function OpenViewDetail() {
+        $('#myViewModal').modal({
+            backdrop: 'static'
+        });
+    }
+</script>
+<style type="text/css">
+    .bs-example {
+        margin: 20px;
+    }
+    .modal-dialog{width:600px;position:static;margin-top:10%;}
+</style>
+
+
+    <div class="container wrapper" ng-app="mainApp" data-ng-controller="CRUDController">
+        <h1 class="text-center">AngularJS CRUD Operations Demo</h1>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="bs-example">
+                <!-- Button HTML (to Trigger Modal) -->
+                <input type="button" class="btn btn-lg btn-primary launch-modal" value="Launch Demo Modal">
+
+                <!-- Modal HTML -->
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title">Confirmation</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div ng-include src="'/Templates/CreateEmp'"> </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="myViewModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title">Confirmation</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div ng-include src="'/Templates/ViewEmpDetail'"> </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+
+        <br />
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Salary</th>
+                    <th>Delete</th>
+                </tr>
+                <tr data-ng-repeat="Emp in EmployeeList">
+                    <td>{{ Emp.Id }}</td>
+                    <td>{{ Emp.Name }}</td>
+                    <td>{{ Emp.Salary }}</td>
+                    <td>
+                        <input type="button" data-ng-click="GetEmpData(Emp)" onclick="OpenViewDetail();" class="launch-Viewdetail" value="View" /> |
+                        <a href="javascript:;">Edit</a> |
+                        <a data-ng-click="DeleteData(Emp)" href="javascript:;">Delete</a>
+                    </td>
+                </tr>
+            </table>
+
+            <a data-ng-click="SaveData()" href="javascript:;">Save to database</a>
+        </div>
+    </div>
+
+
+
